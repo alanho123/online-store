@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+   <changeSet author="jason (generated)" id="1721698194245-3">
+      <addColumn tableName="invoice">
+         <column name="code" type="varchar(255)"/>
+      </addColumn>
+   </changeSet>
+   <changeSet author="jason (generated)" id="1721698194245-4">
+      <addColumn tableName="customer">
+         <column name="user_id" type="bigint">
+            <constraints nullable="false"/>
+         </column>
+      </addColumn>
+   </changeSet>
+   <changeSet author="jason (generated)" id="1721698194245-5">
+      <addUniqueConstraint columnNames="user_id"
+                           constraintName="UC_CUSTOMERUSER_ID_COL"
+                           tableName="customer"/>
+   </changeSet>
+   <changeSet author="jason (generated)" id="1721698194245-6">
+      <addForeignKeyConstraint baseColumnNames="user_id"
+                               baseTableName="customer"
+                               constraintName="FKg09blp5mmjq2s3vgngse5ug4a"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="jhi_user"
+                               validate="true"/>
+   </changeSet>
+   <changeSet author="jason (generated)" id="1721698194245-1">
+      <setTableRemarks tableName="product"/>
+   </changeSet>
+   <changeSet author="jason (generated)" id="1721698194245-2">
+      <modifyDataType columnName="email" newDataType="varchar(254)" tableName="jhi_user"/>
+   </changeSet>
+</databaseChangeLog>

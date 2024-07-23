@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+   <changeSet author="jason (generated)" id="1721698879279-3">
+      <addColumn tableName="customer">
+         <column name="user_id" type="bigint">
+            <constraints nullable="false"/>
+         </column>
+      </addColumn>
+   </changeSet>
+   <changeSet author="jason (generated)" id="1721698879279-4">
+      <addUniqueConstraint columnNames="user_id"
+                           constraintName="UC_CUSTOMERUSER_ID_COL"
+                           tableName="customer"/>
+   </changeSet>
+   <changeSet author="jason (generated)" id="1721698879279-5">
+      <addForeignKeyConstraint baseColumnNames="user_id"
+                               baseTableName="customer"
+                               constraintName="FKg09blp5mmjq2s3vgngse5ug4a"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="jhi_user"
+                               validate="true"/>
+   </changeSet>
+   <changeSet author="jason (generated)" id="1721698879279-1">
+      <setTableRemarks tableName="product"/>
+   </changeSet>
+   <changeSet author="jason (generated)" id="1721698879279-2">
+      <modifyDataType columnName="email" newDataType="varchar(254)" tableName="jhi_user"/>
+   </changeSet>
+</databaseChangeLog>
